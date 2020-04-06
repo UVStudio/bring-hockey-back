@@ -171,7 +171,7 @@ table th.r {
 
 .table100-head th {
   font-family: OpenSans-Regular;
-  font-size: 18px;
+  font-size: 15px;
   color: #fff;
   line-height: 1.2;
   font-weight: unset;
@@ -183,7 +183,7 @@ tbody tr:nth-child(even) {
 
 tbody tr {
   font-family: OpenSans-Regular;
-  font-size: 15px;
+  font-size: 13px;
   color: #808080;
   line-height: 1.2;
   font-weight: unset;

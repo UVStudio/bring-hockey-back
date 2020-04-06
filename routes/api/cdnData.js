@@ -9,6 +9,7 @@ router.get('/', async (req, res) => {
       'https://pomber.github.io/covid19/timeseries.json'
     );
     const cdnData = response.data.Canada;
+    //console.log(cdnData);
     res.json(cdnData);
   } catch (error) {
     console.error(error);
