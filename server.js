@@ -9,14 +9,12 @@ const app = express();
 //app.use(logger);
 
 //handlebars middleware
-app.engine('handlebars', exphbs({ defaultLayout: 'main' }));
-app.set('view engine', 'handlebars');
+// app.engine('handlebars', exphbs({ defaultLayout: 'main' }));
+// app.set('view engine', 'handlebars');
 
 //Homepage route
 app.get('/', (req, res) => {
-  res.render('index', {
-    title: 'Bring hockey back!',
-  });
+  res.sendFile(path.join(__dirname + '/index.html'));
 });
 
 //set static folder

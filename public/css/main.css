@@ -101,17 +101,22 @@ iframe {
 navbar */
 .navbar {
   background-image: url('../images/ice.jpg');
+  height: 65px;
 }
 
 .nav-header {
   font-family: 'Montserrat', sans-serif;
   font-weight: 800;
-  margin-left: 0.6em;
-  padding: 0.5em 0em;
+  margin-left: 1em;
+  padding: 0.5em;
+  float: left;
 }
 
 .maple-leaf {
-  display: inline;
+  display: block;
+  position: relative;
+  float: right;
+  margin: 0.5em 2em 0.5em 0em;
 }
 
 /*//////////////////////////////////////////////////////////////////
