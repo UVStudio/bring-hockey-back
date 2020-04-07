@@ -52,9 +52,11 @@ fetch('api/cdnData')
         incOverTotalPerc = 0;
       } else {
         incOverTotal = ((newCases / rawData[i - 1].confirmed) * 100).toFixed(2);
+        if (incOverTotal === 'Infinity') {
+          incOverTotal = 100;
+        }
         incOverTotalPerc = incOverTotal + '%';
       }
-      //console.log(incOverTotalPerc);
 
       //% increase over active
       let incOverActive;
@@ -65,6 +67,9 @@ fetch('api/cdnData')
         incOverActive = ((newCases / (activeCases - newCases)) * 100).toFixed(
           2
         );
+        if (incOverActive === 'Infinity') {
+          incOverActive = 100;
+        }
         incOverActivePerc = incOverActive + '%';
       }
 
@@ -74,7 +79,7 @@ fetch('api/cdnData')
       incOverTotalArray.push(parseFloat(incOverTotal));
 
       if (i < 7) {
-        sevenRollingTotal = 0;
+        sevenRollingTotal = 'n/a';
       } else {
         sevenRollingTotalPreFix =
           (incOverTotalArray[i] +
@@ -87,15 +92,16 @@ fetch('api/cdnData')
           7;
         sevenRollingTotal = sevenRollingTotalPreFix.toFixed(2) + '%';
       }
-      //console.log(sevenRollingTotal);
-      //console.log(incOverTotalArray);
+      if (sevenRollingTotal == 'NaN%') {
+        sevenRollingTotal = 'n/a';
+      }
 
       //7 day rolling average over active cases
       let sevenRollingActive;
       incOverActiveArray.push(parseFloat(incOverActive));
 
       if (i < 7) {
-        sevenRollingActive = 0;
+        sevenRollingActive = 'n/a';
       } else {
         sevenRollingActivePreFix =
           (incOverActiveArray[i] +
@@ -107,6 +113,9 @@ fetch('api/cdnData')
             incOverActiveArray[i - 6]) /
           7;
         sevenRollingActive = sevenRollingActivePreFix.toFixed(2) + '%';
+      }
+      if (sevenRollingActive == 'NaN%') {
+        sevenRollingActive = 'n/a';
       }
       //console.log(sevenRollingActive);
 
@@ -126,8 +135,8 @@ fetch('api/cdnData')
       };
       const rowData = Object.create(dataObj);
       rowData.date = date;
-      rowData.activeCases = activeCases;
       rowData.cases = cases;
+      rowData.activeCases = activeCases;
       rowData.newCases = newCases;
       rowData.incOverTotalPerc = incOverTotalPerc;
       rowData.incOverActivePerc = incOverActivePerc;
@@ -139,11 +148,12 @@ fetch('api/cdnData')
 
       rowDataArray.push(rowData);
     }
-    console.log(rowDataArray);
+
+    const rowDataArrayReversed = rowDataArray.reverse();
+    console.log(rowDataArrayReversed);
 
     //create table and populate array rows and cells
-
-    generateTable(tbody, rowDataArray);
+    generateTable(tbody, rowDataArrayReversed);
   });
 
 function generateTable(tbody, data) {
