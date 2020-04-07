@@ -1,5 +1,7 @@
 console.log('FE js working');
 
+const tbody = document.querySelector('tbody');
+
 fetch('api/cdnData')
   .then((response) => {
     return response.json();
@@ -138,15 +140,19 @@ fetch('api/cdnData')
       rowDataArray.push(rowData);
     }
     console.log(rowDataArray);
+
+    //create table and populate array rows and cells
+
+    generateTable(tbody, rowDataArray);
   });
 
-// function generateTable(table, data) {
-//   for (let element of data) {
-//     let row = table.insertRow();
-//     for (key in element) {
-//       let cell = row.insertCell();
-//       let text = document.createTextNode(element[key]);
-//       cell.appendChild(text);
-//     }
-//   }
-// }
+function generateTable(tbody, data) {
+  for (let element of data) {
+    let row = tbody.insertRow();
+    for (key in element) {
+      let cell = row.insertCell();
+      let text = document.createTextNode(element[key]);
+      cell.appendChild(text);
+    }
+  }
+}
