@@ -18,6 +18,7 @@ fetch('api/cdnData')
     const activeCasesBarArray = [];
     const deathsBarArray = [];
     const recoveredBarArray = [];
+    const totalCasesBarArray = [];
 
     // calculate values for fields
     for (i = 0; i < rawData.length; i++) {
@@ -35,6 +36,7 @@ fetch('api/cdnData')
 
       //total cases
       const cases = rawData[i].confirmed;
+      totalCasesBarArray.push(cases);
 
       //new deaths
       let newDeaths;
@@ -197,6 +199,10 @@ fetch('api/cdnData')
       cropAmount,
       activeCasesBarArray.length
     );
+    const totalCasesBarArrayCropped = totalCasesBarArray.splice(
+      cropAmount,
+      totalCasesBarArray.length
+    );
 
     //line chart building
     const ctx = document.getElementById('myChart');
@@ -216,7 +222,7 @@ fetch('api/cdnData')
             label: 'Active Cases',
             data: sevenRAActiveChartArrayCropped,
             backgroundColor: ['rgba(153, 102, 255, 0)'],
-            borderColor: ['rgba(153, 102, 255, 1)'],
+            borderColor: ['#316395'],
             borderWidth: 1,
           },
         ],
@@ -255,8 +261,8 @@ fetch('api/cdnData')
             backgroundColor: '#994499',
           },
           {
-            label: 'Active Cases',
-            data: activeCasesBarArrayCropped,
+            label: 'Total Cases',
+            data: totalCasesBarArrayCropped,
             backgroundColor: '#316395',
           },
         ],
