@@ -93,7 +93,7 @@ iframe {
 }
 
 .main-text {
-  margin: 1em auto;
+  margin: 2em auto 0.5em;
   width: 80%;
 }
 
@@ -101,22 +101,47 @@ iframe {
 navbar */
 .navbar {
   background-image: url('../images/ice.jpg');
-  height: 65px;
+  height: 90px;
 }
 
 .nav-header {
   font-family: 'Montserrat', sans-serif;
-  font-weight: 800;
+  font-weight: 900;
   margin-left: 1em;
   padding: 0.5em;
-  float: left;
+}
+
+.text-heading {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 600;
+  margin: 1em auto;
 }
 
 .maple-leaf {
   display: block;
   position: relative;
   float: right;
-  margin: 0.5em 2em 0.5em 0em;
+  margin-right: 2em;
+}
+
+/*///////////
+char */
+
+.chart-description {
+  width: 60vw;
+  margin: 3em auto 1em;
+  text-align: center;
+}
+
+.chart-container {
+  width: 80vw;
+  height: auto;
+  margin: 2em auto;
+}
+
+#myChart {
+  width: 400px;
+  height: 400px;
 }
 
 /*//////////////////////////////////////////////////////////////////
@@ -164,7 +189,7 @@ table * {
 }
 table td,
 table th {
-  padding-left: 8px;
+  padding-left: 1px;
 }
 table thead tr {
   height: 60px;
@@ -179,7 +204,7 @@ table tbody tr:last-child {
 }
 table td,
 table th {
-  text-align: left;
+  text-align: center;
 }
 table td.l,
 table th.l {
@@ -222,7 +247,8 @@ tbody tr:hover {
 
 .column {
   width: 100px;
-  padding: 0px 10px;
+  padding: 5px 10px;
+  text-align: center;
 }
 
 @media screen and (max-width: 992px) {
@@ -234,6 +260,7 @@ tbody tr:hover {
   table td,
   table th {
     display: block;
+    text-align: left;
   }
   table thead {
     display: none;
@@ -241,7 +268,6 @@ tbody tr:hover {
   table tbody tr {
     height: auto;
     padding: 20px 0;
-    border: 1px solid #777777;
   }
   table tbody tr td {
     padding-left: 60% !important;

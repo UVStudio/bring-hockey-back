@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Puck off CoVid-19!</title>
+    <title>Puck off COVID-19</title>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="icon" type="image/png" href="images/icons/favicon.ico" />
@@ -37,7 +37,7 @@
 
   <body>
     <nav class="navbar navbar-light bg-light">
-      <h2 class="nav-header">Puck off CoVid-19!</h2>
+      <h2 class="nav-header">Puck off! COVID-19!</h2>
       <img
         class="maple-leaf"
         src="http://www.pngall.com/wp-content/uploads/2016/07/Canada-Leaf-PNG-Picture.png"
@@ -46,6 +46,7 @@
       />
     </nav>
     <div class="main-text">
+      <h4 class="text-heading">Canada vs COVID-19</h4>
       <p>
         This site calculates various averages of increase (and hopefully
         decrease) in cases of CoVid-19 in Canada. The sooner we get rid of this,
@@ -53,19 +54,27 @@
       </p>
       <br />
       <p>
-        If you are wondering why the case numbers are not the same as data from
-        some other sites you are seeing; different sites collect data at
-        different cut off times. The important thing is in the long run, the
-        numbers are more or less the same across different sites reporting on
-        CoVid-19.
+        If you are wondering why the day-to-day case numbers are not the same as
+        data from some other sites you are seeing; different sites collect data
+        at different daily cut off times. The important thing to keep in mind
+        is, in the long run, the numbers are more or less the same across
+        different sites reporting on CoVid-19.
       </p>
       <br />
       <p>
         We focus on the trend over time, using a statistical concept called
-        <a href="https://en.wikipedia.org/wiki/Moving_average"
+        <a href="https://en.wikipedia.org/wiki/Moving_average" target="_blank"
           >rolling average</a
         >.
       </p>
+    </div>
+    <div class="chart-description">
+      <h5>
+        7 day Rolling Average of Daily Case Increase over Total Diagnosed Cases
+      </h5>
+    </div>
+    <div class="chart-container">
+      <canvas id="myChart" width="400" height="200"></canvas>
     </div>
     <div class="container">
       <div class="limiter">
@@ -102,6 +111,11 @@
       <script src="vendor/bootstrap/js/popper.js"></script>
       <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
       <script src="vendor/select2/select2.min.js"></script>
+      <script
+        src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"
+        integrity="sha256-R4pqcOYV8lt7snxMQO/HSbVCFRPMdrhAFMH+vr9giYI="
+        crossorigin="anonymous"
+      ></script>
       <script src="js/main.js"></script>
     </div>
   </body>
