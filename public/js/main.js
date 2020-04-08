@@ -1,5 +1,4 @@
-console.log('FE js working');
-
+//console.log('FE js working');
 const tbody = document.querySelector('tbody');
 
 fetch('api/cdnData')
@@ -7,7 +6,6 @@ fetch('api/cdnData')
     return response.json();
   })
   .then((rawData) => {
-    //console.log(rawData);
     //arrays for table calculations
     const incOverTotalArray = [];
     const incOverActiveArray = [];
@@ -16,6 +14,7 @@ fetch('api/cdnData')
     //arrays for chart(s)
     const dateChartArray = [];
     const sevenRATotalChartArray = [];
+    const sevenRAActiveChartArray = [];
 
     // calculate values for fields
     for (i = 0; i < rawData.length; i++) {
@@ -125,7 +124,8 @@ fetch('api/cdnData')
       if (sevenRollingActive == 'NaN%') {
         sevenRollingActive = 'n/a';
       }
-      //console.log(sevenRollingActive);
+      sevenRollingActiveNumber = parseFloat(sevenRollingActive);
+      sevenRAActiveChartArray.push(sevenRollingActiveNumber);
 
       //create row object for each date
       const dataObj = {
@@ -158,38 +158,46 @@ fetch('api/cdnData')
     }
 
     const rowDataArrayReversed = rowDataArray.reverse();
-    console.log(rowDataArrayReversed);
 
     //create table and populate array rows and cells
     generateTable(tbody, rowDataArrayReversed);
 
-    //chart
-    console.log(sevenRATotalChartArray);
+    //crop out meaningless data at the beginning
+    const cropAmount = 23;
+
+    const dateChartArrayCropped = dateChartArray.splice(
+      cropAmount,
+      dateChartArray.length
+    );
+
+    const sevenRATotalChartArrayCropped = sevenRATotalChartArray.splice(
+      cropAmount,
+      sevenRATotalChartArray.length
+    );
+    const sevenRAActiveChartArrayCropped = sevenRAActiveChartArray.splice(
+      cropAmount,
+      sevenRAActiveChartArray.length
+    );
+
+    //chart building
     const ctx = document.getElementById('myChart');
-    let myChart = new Chart(ctx, {
+    const myChart = new Chart(ctx, {
       type: 'line',
       data: {
-        labels: dateChartArray,
+        labels: dateChartArrayCropped,
         datasets: [
           {
-            label: 'Dates',
-            data: sevenRATotalChartArray,
-            backgroundColor: [
-              'rgba(255, 99, 132, 0)',
-              'rgba(54, 162, 235, 0)',
-              'rgba(255, 206, 86, 0)',
-              'rgba(75, 192, 192, 0)',
-              'rgba(153, 102, 255, 0)',
-              'rgba(255, 159, 64, 0)',
-            ],
-            borderColor: [
-              'rgba(255, 99, 132, 1)',
-              'rgba(54, 162, 235, 1)',
-              'rgba(255, 206, 86, 1)',
-              'rgba(75, 192, 192, 1)',
-              'rgba(153, 102, 255, 1)',
-              'rgba(255, 159, 64, 1)',
-            ],
+            label: 'Total Cases',
+            data: sevenRATotalChartArrayCropped,
+            backgroundColor: ['rgba(255, 99, 132, 0)'],
+            borderColor: ['rgba(255, 99, 132, 1)'],
+            borderWidth: 1,
+          },
+          {
+            label: 'Active Cases',
+            data: sevenRAActiveChartArrayCropped,
+            backgroundColor: ['rgba(153, 102, 255, 0)'],
+            borderColor: ['rgba(153, 102, 255, 1)'],
             borderWidth: 1,
           },
         ],

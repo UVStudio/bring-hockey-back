@@ -129,7 +129,7 @@ char */
 
 .chart-description {
   width: 60vw;
-  margin: 3em auto 1em;
+  margin: 3em auto 0.5em;
   text-align: center;
 }
 
