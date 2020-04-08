@@ -1,7 +1,7 @@
 const express = require('express');
 const path = require('path');
-const exphbs = require('express-handlebars');
-const logger = require('./middleware/logger');
+// const exphbs = require('express-handlebars');
+// const logger = require('./middleware/logger');
 
 const app = express();
 
@@ -23,4 +23,7 @@ app.use(express.static(path.join(__dirname, '/public')));
 //data route
 app.use('/api/cdnData', require('./routes/api/cdnData'));
 
-app.listen(3000, () => console.log('Example app listening on port 3000!'));
+//app.listen(3000, () => console.log('Example app listening on port 3000!'));
+
+const port_number = process.env.PORT || 3000;
+app.listen(port_number);
