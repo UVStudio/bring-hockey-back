@@ -243,7 +243,7 @@ fetch('api/cdnData')
     //bar chart building
     const ctxBar = document.getElementById('myChart-bar');
     const chart = new Chart(ctxBar, {
-      type: 'bar',
+      type: 'line',
       data: {
         labels: dateChartArrayCropped, // responsible for how many bars are gonna show on the chart
         // create 12 datasets, since we have 12 items
@@ -253,17 +253,26 @@ fetch('api/cdnData')
           {
             label: 'Total Deaths',
             data: deathsBarArrayCropped,
-            backgroundColor: '#22aa99',
+            backgroundColor: '#333333',
+            borderWidth: 1,
           },
           {
             label: 'Total Recoveries',
             data: recoveredBarArrayCropped,
-            backgroundColor: '#994499',
+            backgroundColor: '#109618',
+            borderWidth: 1,
+          },
+          {
+            label: 'Active Cases',
+            data: activeCasesBarArrayCropped,
+            backgroundColor: '#316395',
+            borderWidth: 1,
           },
           {
             label: 'Total Cases',
             data: totalCasesBarArrayCropped,
-            backgroundColor: '#316395',
+            backgroundColor: '#994499',
+            borderWidth: 1,
           },
         ],
       },
