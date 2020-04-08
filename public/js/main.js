@@ -15,6 +15,9 @@ fetch('api/cdnData')
     const dateChartArray = [];
     const sevenRATotalChartArray = [];
     const sevenRAActiveChartArray = [];
+    const activeCasesBarArray = [];
+    const deathsBarArray = [];
+    const recoveredBarArray = [];
 
     // calculate values for fields
     for (i = 0; i < rawData.length; i++) {
@@ -43,12 +46,15 @@ fetch('api/cdnData')
 
       //total deaths
       const deaths = rawData[i].deaths;
+      deathsBarArray.push(deaths);
 
       //total recovered
       const recovered = rawData[i].recovered;
+      recoveredBarArray.push(recovered);
 
       //active cases
       const activeCases = cases - deaths - recovered;
+      activeCasesBarArray.push(activeCases);
 
       //% increase over total
       let incOverTotal;
@@ -179,7 +185,20 @@ fetch('api/cdnData')
       sevenRAActiveChartArray.length
     );
 
-    //chart building
+    const deathsBarArrayCropped = deathsBarArray.splice(
+      cropAmount,
+      deathsBarArray.length
+    );
+    const recoveredBarArrayCropped = recoveredBarArray.splice(
+      cropAmount,
+      recoveredBarArray.length
+    );
+    const activeCasesBarArrayCropped = activeCasesBarArray.splice(
+      cropAmount,
+      activeCasesBarArray.length
+    );
+
+    //line chart building
     const ctx = document.getElementById('myChart');
     const myChart = new Chart(ctx, {
       type: 'line',
@@ -209,6 +228,53 @@ fetch('api/cdnData')
               ticks: {
                 beginAtZero: true,
               },
+            },
+          ],
+        },
+      },
+    });
+
+    //bar chart building
+    const ctxBar = document.getElementById('myChart-bar');
+    const chart = new Chart(ctxBar, {
+      type: 'bar',
+      data: {
+        labels: dateChartArrayCropped, // responsible for how many bars are gonna show on the chart
+        // create 12 datasets, since we have 12 items
+        // data[0] = labels[0] (data for first bar - 'Standing costs') | data[1] = labels[1] (data for second bar - 'Running costs')
+        // put 0, if there is no data for the particular bar
+        datasets: [
+          {
+            label: 'Total Deaths',
+            data: deathsBarArrayCropped,
+            backgroundColor: '#22aa99',
+          },
+          {
+            label: 'Total Recoveries',
+            data: recoveredBarArrayCropped,
+            backgroundColor: '#994499',
+          },
+          {
+            label: 'Active Cases',
+            data: activeCasesBarArrayCropped,
+            backgroundColor: '#316395',
+          },
+        ],
+      },
+      options: {
+        responsive: true,
+        legend: {
+          position: 'top', // place legend on the right side of chart
+        },
+        scales: {
+          xAxes: [
+            {
+              stacked: true, // this should be set to make the bars stacked
+            },
+          ],
+          yAxes: [
+            {
+              stacked: false, // this also..
             },
           ],
         },
