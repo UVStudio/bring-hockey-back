@@ -1,16 +1,6 @@
 const express = require('express');
 const path = require('path');
-// const exphbs = require('express-handlebars');
-// const logger = require('./middleware/logger');
-
 const app = express();
-
-//init middleware
-//app.use(logger);
-
-//handlebars middleware
-// app.engine('handlebars', exphbs({ defaultLayout: 'main' }));
-// app.set('view engine', 'handlebars');
 
 //Homepage route
 app.get('/', (req, res) => {
