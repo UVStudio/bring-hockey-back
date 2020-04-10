@@ -152,6 +152,24 @@ char */
 /*//////////////////////////////////////////////////////////////////
 [ Utiliti ]*/
 
+/*////////
+footer*/
+
+footer {
+  margin: 1em auto 0em;
+  padding: 2em 0 2em;
+  color: #fff;
+  background-color: #444444;
+}
+
+footer a {
+  color: #73dfff;
+}
+
+.footer-text-box {
+  width: 80vw;
+}
+
 /*//////////////////////////////////////////////////////////////////
 [ Table ]*/
 

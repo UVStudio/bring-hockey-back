@@ -247,10 +247,7 @@ fetch('api/cdnData')
     const chart = new Chart(ctxBar, {
       type: 'line',
       data: {
-        labels: dateChartArrayCropped, // responsible for how many bars are gonna show on the chart
-        // create 12 datasets, since we have 12 items
-        // data[0] = labels[0] (data for first bar - 'Standing costs') | data[1] = labels[1] (data for second bar - 'Running costs')
-        // put 0, if there is no data for the particular bar
+        labels: dateChartArrayCropped,
         datasets: [
           {
             label: 'Total Deaths',
@@ -260,7 +257,7 @@ fetch('api/cdnData')
             borderWidth: 1,
           },
           {
-            label: 'Total Recoveries',
+            label: 'Total Recovered',
             data: recoveredBarArrayCropped,
             borderColor: '#109618',
             backgroundColor: 'rgba(255, 99, 132, 0)',
@@ -276,7 +273,7 @@ fetch('api/cdnData')
           {
             label: 'Total Cases',
             data: totalCasesBarArrayCropped,
-            borderColor: '#994499',
+            borderColor: 'rgba(255, 99, 132, 1)',
             backgroundColor: 'rgba(255, 99, 132, 0)',
             borderWidth: 1,
           },
@@ -285,17 +282,17 @@ fetch('api/cdnData')
       options: {
         responsive: true,
         legend: {
-          position: 'top', // place legend on the right side of chart
+          position: 'top',
         },
         scales: {
           xAxes: [
             {
-              stacked: true, // this should be set to make the bars stacked
+              stacked: true,
             },
           ],
           yAxes: [
             {
-              stacked: false, // this also..
+              stacked: false,
             },
           ],
         },
