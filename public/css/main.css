@@ -97,6 +97,10 @@ iframe {
   width: 80%;
 }
 
+.underline {
+  text-decoration: underline;
+}
+
 /*////////////////
 navbar */
 .navbar {
@@ -163,7 +167,11 @@ footer {
 }
 
 footer a {
-  color: #73dfff;
+  color: #60b1f9;
+}
+
+footer a:hover {
+  color: #60b1f9;
 }
 
 .footer-text-box {
