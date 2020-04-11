@@ -59,6 +59,9 @@ li {
   margin: 0px;
   list-style-type: none;
 }
+p {
+  font-size: 15px;
+}
 
 /* ------------------------------------ */
 input {
@@ -101,6 +104,12 @@ iframe {
   text-decoration: underline;
 }
 
+.text-heading {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 600;
+  margin: 1em auto;
+}
+
 /*////////////////
 navbar */
 .navbar {
@@ -113,12 +122,6 @@ navbar */
   font-weight: 900;
   margin-left: 1em;
   padding: 0.5em;
-}
-
-.text-heading {
-  font-family: 'Montserrat', sans-serif;
-  font-weight: 600;
-  margin: 1em auto;
 }
 
 .maple-leaf {
@@ -141,6 +144,7 @@ char */
   width: 80vw;
   height: auto;
   margin: 2em auto;
+  position: relative;
 }
 
 #myChart {
@@ -283,6 +287,12 @@ tbody tr:hover {
 }
 
 @media screen and (max-width: 992px) {
+  .maple-leaf {
+    margin-right: 1em;
+  }
+  h2 {
+    font-size: 1.7em;
+  }
   table {
     display: block;
   }
@@ -366,5 +376,18 @@ tbody tr:hover {
   .container-table100 {
     padding-left: 15px;
     padding-right: 15px;
+  }
+  h2 {
+    font-size: 1.5em;
+  }
+  h4 {
+    font-size: 1.2em;
+    font-weight: 700;
+  }
+  p {
+    font-size: 14px;
+  }
+  .chart-container {
+    width: 90vw;
   }
 }

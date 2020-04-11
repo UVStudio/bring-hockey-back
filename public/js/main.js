@@ -230,6 +230,7 @@ fetch('api/cdnData')
         ],
       },
       options: {
+        maintainAspectRatio: true,
         scales: {
           yAxes: [
             {
@@ -281,6 +282,7 @@ fetch('api/cdnData')
       },
       options: {
         responsive: true,
+        maintainAspectRatio: true,
         legend: {
           position: 'top',
         },
