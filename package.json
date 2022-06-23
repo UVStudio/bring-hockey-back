@@ -15,7 +15,7 @@
     "express": "^4.17.1",
     "express-handlebars": "^4.0.2",
     "handlebars": "^4.7.6",
-    "jsdom": "^16.2.2",
+    "jsdom": "^16.5.0",
     "moment": "^2.24.0"
   },
   "devDependencies": {
